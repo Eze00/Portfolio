@@ -1,50 +1,49 @@
-export const data = {
-  name: "Your Name",
-  title: "Software Engineer",
-  location: "Your City, Country",
-  email: "hello@yourname.dev",
+const data = {
+  name: "Ezedine Kargougou",
+  title: "Full-Stack Engineer",
+  location: "Greater Phoenix Area, Arizona",
+  email: "keze2000@outlook.com",
   bio: [
-    "I'm a software engineer with 5+ years of experience across the full stack. I care about systems that are simple to reason about, easy to change, and a pleasure for other engineers to work in.",
-    "My background spans backend architecture, API design, and frontend development. I've worked at early-stage startups owning features end-to-end and at larger companies focused on platform reliability and developer tooling.",
-    "I write clean, tested code — and I know when not to over-engineer things.",
+    "I'm a software engineer with 3+ years of experience across the full stack.",
+    "My background spans backend architecture, API design, and frontend development.",
   ],
   facts: [
-    { key: "Location", value: "Your City, Country" },
+    { key: "Location", value: "Greater Phoenix Area, Arizona" },
     { key: "Experience", value: "5+ years" },
     { key: "Focus", value: "Full-stack / Backend" },
-    { key: "Education", value: "B.Sc. Computer Science" },
+    { key: "Education", value: "B.s. Computer Science" },
     { key: "Status", value: "Open to opportunities", highlight: true },
   ],
   stats: [
-    { value: "5+", label: "Years Experience" },
+    { value: "3+", label: "Years Experience" },
     { value: "20+", label: "Projects Shipped" },
     { value: "3", label: "Companies" },
-    { value: "∞", label: "Bugs Fixed" },
+    // { value: "∞", label: "Bugs Fixed" },
   ],
   skills: [
     {
       category: "Languages",
-      items: ["TypeScript", "Python", "Go", "SQL"],
+      items: ["TypeScript", "JavasScript", "C#", "Python"],
     },
     {
       category: "Frontend",
-      items: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
+      items: ["React", "Next.js", "Tailwind CSS"],
     },
     {
       category: "Backend",
-      items: ["Node.js", "Express", "FastAPI", "GraphQL"],
+      items: [".NET", "Node.js", "Express", "GraphQL"],
     },
     {
       category: "Data & Storage",
-      items: ["PostgreSQL", "Redis", "MongoDB", "Elasticsearch"],
+      items: ["PostgreSQL", "Microsoft SQL Server", "MongoDB", "Elasticsearch"],
     },
-    {
-      category: "Cloud & Infra",
-      items: ["AWS", "GCP", "Docker", "Kubernetes", "Terraform"],
-    },
+    // {
+    //   category: "Cloud & Infra",
+    //   items: ["AWS", "GCP", "Docker", "Kubernetes", "Terraform"],
+    // },
     {
       category: "Practices",
-      items: ["TDD", "CI/CD", "System Design", "Code Review"],
+      items: ["TDD", "CI/CD", "Code Review"],
     },
   ],
   projects: [
@@ -108,3 +107,5 @@ export const data = {
     { label: "Twitter", href: "https://twitter.com" },
   ],
 };
+
+export default data;
