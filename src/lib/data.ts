@@ -9,8 +9,8 @@ const data = {
   ],
   facts: [
     { key: "Location", value: "Greater Phoenix Area, Arizona" },
-    { key: "Experience", value: "5+ years" },
-    { key: "Focus", value: "Full-stack / Backend" },
+    { key: "Experience", value: "3+ years" },
+    { key: "Focus", value: "Full-stack | Front-end | Back-end" },
     { key: "Education", value: "B.s. Computer Science" },
     { key: "Status", value: "Open to opportunities", highlight: true },
   ],
@@ -18,7 +18,6 @@ const data = {
     { value: "3+", label: "Years Experience" },
     { value: "20+", label: "Projects Shipped" },
     { value: "3", label: "Companies" },
-    // { value: "∞", label: "Bugs Fixed" },
   ],
   skills: [
     {
@@ -27,7 +26,7 @@ const data = {
     },
     {
       category: "Frontend",
-      items: ["React", "Next.js", "Tailwind CSS"],
+      items: ["React", "Next.js"],
     },
     {
       category: "Backend",
@@ -35,76 +34,87 @@ const data = {
     },
     {
       category: "Data & Storage",
-      items: ["PostgreSQL", "Microsoft SQL Server", "MongoDB", "Elasticsearch"],
+      items: ["PostgreSQL", "Microsoft SQL Server", "MongoDB"],
     },
-    // {
-    //   category: "Cloud & Infra",
-    //   items: ["AWS", "GCP", "Docker", "Kubernetes", "Terraform"],
-    // },
     {
       category: "Practices",
-      items: ["TDD", "CI/CD", "Code Review"],
+      items: ["TDD", "CI/CD", "Agile"],
+    },
+    {
+      category: "Tools",
+      items: ["Figma", "Azure", "AWS"],
     },
   ],
-  projects: [
+  shippedProjects: [
     {
       index: "01",
-      title: "Project Alpha",
-      description:
-        "A real-time collaboration platform built for scale. Event-driven architecture handles thousands of concurrent sessions with sub-100ms latency across global regions.",
-      tags: ["Next.js", "Node.js", "Redis", "PostgreSQL", "WebSockets"],
-      live: "#",
+      title: "Help Me Create",
+      description: "TODO",
+      tags: ["React", "TypeScript", "Azure", "LLM", "WebSockets"],
+      link: "https://techcommunity.microsoft.com/blog/microsoft365copilotblog/try-new-ways-of-working-with-help-me-create-in-the-microsoft-365-web-app/4071000?utm_source=chatgpt.com",
       github: "#",
     },
     {
       index: "02",
-      title: "Project Beta",
+      title: "Meeting Prep",
       description:
-        "Open-source CLI toolkit for automating developer workflows. Plugin architecture with a rich terminal UI. Used by 2K+ developers across hundreds of projects.",
-      tags: ["Go", "CLI", "Open Source"],
-      live: null,
+        'When you have an upcoming meeting, Copilot proactively shows you a "Prepare" button in your inbox which helps you quickly get context by creating a summary of the meeting and showing and summarizing relevant files',
+      tags: [".NET", "C#", "React", "TypeScript", "CI/CD"],
+      link: "#",
       github: "#",
     },
     {
       index: "03",
-      title: "Project Gamma",
+      title: "RSVP Suggestions",
+      description: "TODO",
+      tags: ["React", "C#", "React", "GraphQL"],
+      link: "#",
+      github: "#",
+    },
+    {
+      index: "04",
+      title: "ContextIQ",
       description:
-        "Analytics pipeline processing millions of events per day. Built for reliability with automatic failover, dead-letter queues, and real-time dashboards.",
-      tags: ["Python", "Kafka", "React", "Spark", "AWS"],
-      live: "#",
+        "Copilot chat provides a command-triggered search experience that allows users to query organizational context across people, files, messages, emails, and meetings. Relevant information is retrieved and summarized through an AI-powered conversational interface.",
+      tags: ["React", "TypeScript"],
+      link: null,
       github: "#",
     },
   ],
   experience: [
     {
-      period: "20XX — Present",
-      role: "Senior Software Engineer",
-      company: "Company Name",
-      type: "Full-time",
-      description:
-        "Led architecture of a distributed microservices platform serving 10M+ users. Mentored a team of 4 engineers and drove adoption of TypeScript and testing best practices. Reduced incident rate by 60% through improved observability.",
-    },
-    {
-      period: "20XX — 20XX",
+      period: "2022 — 2025",
       role: "Software Engineer",
-      company: "Company Name",
+      company: "Microsoft",
       type: "Full-time",
-      description:
-        "Full-stack development on core product features. Improved API response times by 40% through targeted caching. Shipped a payments integration now used by 50K+ customers.",
+      description: "TODO",
     },
     {
-      period: "20XX",
-      role: "Engineering Intern",
-      company: "Company Name",
+      period: "2022",
+      role: "Front-end Engineer Intern",
+      company: "Microsoft",
       type: "Internship",
-      description:
-        "Built internal tooling that cut deployment time from 30 minutes to under 5. Presented to engineering leadership and was adopted company-wide within one quarter.",
+      description: "TODO",
+    },
+    {
+      period: "2022",
+      role: "Back-end Engineer",
+      company: "Cerebrum Corp",
+      type: "Part-time",
+      description: "TODO",
+    },
+    {
+      period: "2021",
+      role: "Full-stack Engineer Intern",
+      company: "Choice Hotels International",
+      type: "Internship",
+      description: "TODO",
     },
   ],
   socials: [
-    { label: "GitHub", href: "https://github.com" },
-    { label: "LinkedIn", href: "https://linkedin.com" },
-    { label: "Twitter", href: "https://twitter.com" },
+    { label: "GitHub", href: "https://github.com/Eze00" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/eze00" },
+    { label: "Email", href: "keze2000@outlook.com" },
   ],
 };
 
