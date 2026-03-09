@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.num {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-3);
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-charcoal-600);
+}
+
+.label {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-3);
+}
