@@ -12,17 +12,17 @@ export default function Hero() {
 
       <h1 className={styles.name}>{data.name}</h1>
       <p className={styles.title}>{data.title}</p>
-      <p className={styles.bio}>{data.bio}</p>
+      {/* <p className={styles.bio}>{data.bio}</p> */}
 
       <div className={styles.actions}>
-        <Link href="#projects" className={styles.btnPrimary}>
+        <Link href="#experience" className={styles.btnPrimary}>
+          Experience
+        </Link>
+        <Link href="#projects" className={styles.btnSecondary}>
           View Projects
         </Link>
         <Link href="#contact" className={styles.btnSecondary}>
           Get in Touch
-        </Link>
-        <Link href="#" className={styles.btnSecondary}>
-          Resume ↓
         </Link>
       </div>
 
