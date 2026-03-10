@@ -1,6 +1,6 @@
 import Link from "next/link";
 import data from "@/lib/data";
-import styles from "./Hero.module.css";
+import styles from "./styles/Hero.module.css";
 
 export default function Hero() {
   return (

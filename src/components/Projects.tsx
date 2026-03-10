@@ -2,7 +2,7 @@ import Link from "next/link";
 import data from "@/lib/data";
 import SectionHeader from "./SectionHeader";
 import ScrollReveal from "./ScrollReveal";
-import styles from "./Projects.module.css";
+import styles from "./styles/Projects.module.css";
 
 export default function Projects() {
   return (

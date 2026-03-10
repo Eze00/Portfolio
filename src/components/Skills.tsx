@@ -1,13 +1,13 @@
 import data from "@/lib/data";
 import SectionHeader from "./SectionHeader";
 import ScrollReveal from "./ScrollReveal";
-import styles from "./Skills.module.css";
+import styles from "./styles/Skills.module.css";
 
 export default function Skills() {
   return (
     <section id="skills" className={styles.skills}>
       <ScrollReveal>
-        <SectionHeader number="02" label="Skills" />
+        <SectionHeader number="04" label="Skills" />
       </ScrollReveal>
 
       <ScrollReveal delay={60}>

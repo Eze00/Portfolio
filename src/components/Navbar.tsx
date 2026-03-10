@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import data from "@/lib/data";
-import styles from "./Navbar.module.css";
+import styles from "./styles/Navbar.module.css";
 
 const navLinks = [
   { label: "About", href: "#about" },

@@ -1,7 +1,7 @@
 import data from "@/lib/data";
 import SectionHeader from "./SectionHeader";
 import ScrollReveal from "./ScrollReveal";
-import styles from "./About.module.css";
+import styles from "./styles/About.module.css";
 
 export default function About() {
   return (
