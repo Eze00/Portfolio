@@ -1,0 +1,39 @@
+.footer {
+  border-top: 1px solid var(--color-charcoal-600);
+  padding: 1.5rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copy {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--color-text-3);
+}
+
+.socials {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.socialLink {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-3);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.socialLink:hover {
+  color: var(--color-gold);
+}
+
+@media (max-width: 640px) {
+  .footer {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+}
