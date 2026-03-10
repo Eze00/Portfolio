@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import data from "@/lib/data";
 import styles from "./styles/Navbar.module.css";
@@ -25,29 +25,30 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
-  // Active section tracking via IntersectionObserver
-  useEffect(() => {
+  const updateActiveSection = useCallback(() => {
     const sectionIds = navLinks.map((l) => l.href.replace("#", ""));
-    const observers: IntersectionObserver[] = [];
+    const scrollY = window.scrollY + 120;
 
-    sectionIds.forEach((id) => {
+    let current = sectionIds[0];
+    for (const id of sectionIds) {
       const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(id);
-        },
-        { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-
-    return () => observers.forEach((obs) => obs.disconnect());
+      if (el && el.offsetTop <= scrollY) {
+        current = id;
+      }
+    }
+    setActiveSection(current);
   }, []);
+
+  useEffect(() => {
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    return () => window.removeEventListener("scroll", updateActiveSection);
+  }, [updateActiveSection]);
 
   const close = () => setOpen(false);
 
@@ -82,7 +83,9 @@ export default function Navbar() {
             onClick={() => setOpen((toggle) => !toggle)}
             aria-label="Toggle menu"
           >
-            <span /><span /><span />
+            <span />
+            <span />
+            <span />
           </button>
         </div>
       </nav>

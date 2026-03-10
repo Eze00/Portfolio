@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import data from "@/lib/data";
 import SectionHeader from "./SectionHeader";
@@ -10,9 +10,19 @@ export default function Projects() {
   const [openPreview, setOpenPreview] = useState<string | null>(null);
   const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
 
+  // When a preview opens and it's a video, play from start
+  useEffect(() => {
+    if (!openPreview) return;
+    const video = videoRefs.current[openPreview];
+    if (video) {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    }
+  }, [openPreview]);
+
   const togglePreview = (index: string) => {
     if (openPreview === index) {
-      // Closing — reset video if it exists
+      // Closing — pause and reset
       const video = videoRefs.current[index];
       if (video) {
         video.pause();
@@ -70,7 +80,6 @@ export default function Projects() {
                   <video
                     ref={(el) => { videoRefs.current[project.index] = el; }}
                     src={project.preview}
-                    autoPlay
                     loop
                     muted
                     playsInline

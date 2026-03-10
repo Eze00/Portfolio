@@ -48,3 +48,7 @@
   line-height: 1.85;
   max-width: 600px;
 }
+
+.companyRowContainer {
+  margin-bottom: 2rem;
+}
