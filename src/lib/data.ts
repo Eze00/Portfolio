@@ -23,16 +23,19 @@ const data = {
   skills: [
     {
       category: "Languages",
-      items: ["TypeScript", "JavaScript", "C#", "Python"],
+      items: ["TypeScript", "JavaScript", "HTML/CSS", "C#", "Python"],
     },
     { category: "Frontend", items: ["React", "Next.js"] },
-    { category: "Backend", items: [".NET", "Node.js", "Express", "GraphQL"] },
     {
-      category: "Data & Storage",
+      category: "Backend",
+      items: [".NET", "Node.js", "Express", "GraphQL", "Redis", "CI/CD"],
+    },
+    {
+      category: "Database",
       items: ["PostgreSQL", "Microsoft SQL Server", "MongoDB"],
     },
-    { category: "Practices", items: ["TDD", "CI/CD", "Agile"] },
-    { category: "Tools", items: ["Figma", "Azure", "AWS"] },
+    { category: "Cloud", items: ["Azure", "AWS"] },
+    { category: "Testing", items: ["xUnit", "Jest", "Playwright"] },
   ],
   shippedProjects: [
     {

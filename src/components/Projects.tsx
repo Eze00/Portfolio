@@ -41,7 +41,7 @@ export default function Projects() {
   return (
     <section id="projects" className={styles.projects}>
       <ScrollReveal>
-        <SectionHeader number="03" label="Shipped Projects" />
+        <SectionHeader number="03" label="Shipped Features" />
       </ScrollReveal>
 
       <div className={styles.list}>
