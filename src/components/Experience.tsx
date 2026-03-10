@@ -1,3 +1,4 @@
+import Image from "next/image";
 import data from "@/lib/data";
 import SectionHeader from "./SectionHeader";
 import ScrollReveal from "./ScrollReveal";
@@ -13,13 +14,24 @@ export default function Experience() {
       <div className="timeline">
         {data.experience.map((experience, index) => (
           <ScrollReveal key={index} delay={index * 70} className="tl-item">
-            <div className="tl-dot" />
-            <p className={styles.date}>{experience.period}</p>
-            <h3 className={styles.role}>{experience.role}</h3>
-            <p className={styles.company}>
-              {experience.company} · {experience.type}
-            </p>
-            <p className={styles.desc}>{experience.description}</p>
+            <div className={styles.companyRowContainer}>
+              <div className="tl-dot" />
+              <p className={styles.date}>{experience.period}</p>
+              <h3 className={styles.role}>{experience.role}</h3>
+              <div className={styles.companyRow}>
+                <Image
+                  src={experience.logo}
+                  alt={`${experience.company} logo`}
+                  width={20}
+                  height={20}
+                  className={styles.logo}
+                />
+                <p className={styles.company}>
+                  {experience.company} · {experience.type}
+                </p>
+              </div>
+              <p className={styles.desc}>{experience.description}</p>
+            </div>
           </ScrollReveal>
         ))}
       </div>

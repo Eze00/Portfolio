@@ -13,23 +13,26 @@ export default function About() {
       <div className={styles.grid}>
         <ScrollReveal>
           <div className={styles.text}>
-            {data.bio.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
+            <img
+              src="/portfolio-pic.JPG"
+              alt="Exedine"
+              className={styles.image}
+            />
+            <p>{data.bio}</p>
           </div>
         </ScrollReveal>
 
         <ScrollReveal delay={80}>
           <div className={styles.card}>
-            {data.facts.map((f, i) => (
-              <div key={i} className={styles.row}>
-                <span className={styles.rowKey}>{f.key}</span>
+            {data.facts.map((fact, index) => (
+              <div key={index} className={styles.row}>
+                <span className={styles.rowKey}>{fact.key}</span>
                 <span
                   className={
-                    f.highlight ? styles.rowValHighlight : styles.rowVal
+                    fact.highlight ? styles.rowValHighlight : styles.rowVal
                   }
                 >
-                  {f.value}
+                  {fact.value}
                 </span>
               </div>
             ))}

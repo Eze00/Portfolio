@@ -85,7 +85,7 @@ export default function Navbar() {
         </ul>
 
         <div className={styles.socialSection}>
-          <span className={styles.socialLabel}>Find me on</span>
+          <span className={styles.socialLabel}>Check out my</span>
           <div className={styles.socialLinks}>
             {data.socials.map((s) => (
               <Link
@@ -98,9 +98,6 @@ export default function Navbar() {
                 {s.label}
               </Link>
             ))}
-            <Link href={`mailto:${data.email}`} className={styles.socialLink}>
-              Mail
-            </Link>
           </div>
         </div>
       </div>

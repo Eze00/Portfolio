@@ -3,6 +3,7 @@ import data from "@/lib/data";
 import SectionHeader from "./SectionHeader";
 import ScrollReveal from "./ScrollReveal";
 import styles from "./styles/Contact.module.css";
+import socialIcons from "@/lib/socialIcons";
 
 export default function Contact() {
   return (
@@ -14,10 +15,10 @@ export default function Contact() {
       <ScrollReveal delay={60}>
         <div className={styles.box}>
           <div>
-            <h2 className={styles.heading}>Let's build something together.</h2>
+            <h2 className={styles.heading}>Let's get in touch!</h2>
             <p className={styles.note}>
-              Open to full-time roles, freelance projects, and interesting
-              conversations. I typically respond within 24 hours.
+              Open to remote, hybrid or in-person full-time roles. I typically
+              respond within 24 hours.
             </p>
           </div>
 
@@ -26,19 +27,26 @@ export default function Contact() {
               {data.email}
             </Link>
             <div className={styles.socials}>
-              {data.socials.map((s) => (
+              {data.socials.map((social) => (
                 <Link
-                  key={s.label}
-                  href={s.href}
+                  key={social.label}
+                  href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.socialLink}
+                  aria-label={social.label}
                 >
-                  {s.label}
+                  <span className={styles.socialIcon}>
+                    {socialIcons[social.label]}
+                  </span>
                 </Link>
               ))}
-              <Link href={`mailto:${data.email}`} className={styles.socialLink}>
-                Mail
+              <Link
+                href={`mailto:${data.email}`}
+                className={styles.socialLink}
+                aria-label="Mail"
+              >
+                <span className={styles.socialIcon}>{socialIcons["Mail"]}</span>
               </Link>
             </div>
           </div>

@@ -6,18 +6,18 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <span className={styles.copy}>
-        © {new Date().getFullYear()} {data.name}
+        {data.name} © {new Date().getFullYear()}. {"All Rights Reserved."}
       </span>
       <div className={styles.socials}>
-        {data.socials.map((s) => (
+        {data.socials.map((social) => (
           <Link
-            key={s.label}
-            href={s.href}
+            key={social.label}
+            href={social.href}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialLink}
           >
-            {s.label}
+            {social.label}
           </Link>
         ))}
       </div>
