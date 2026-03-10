@@ -51,8 +51,9 @@ const data = {
       title: "Help Me Create",
       description: "TODO",
       tags: ["React", "TypeScript", "Azure", "LLM", "WebSockets"],
-      link: "https://techcommunity.microsoft.com/blog/microsoft365copilotblog/try-new-ways-of-working-with-help-me-create-in-the-microsoft-365-web-app/4071000?utm_source=chatgpt.com",
-      github: "#",
+      learnMore:
+        "https://techcommunity.microsoft.com/blog/microsoft365copilotblog/try-new-ways-of-working-with-help-me-create-in-the-microsoft-365-web-app/4071000?utm_source=chatgpt.com",
+      preview: "/HMC.mp4",
     },
     {
       index: "02",
@@ -60,25 +61,26 @@ const data = {
       description:
         'When you have an upcoming meeting, Copilot proactively shows you a "Prepare" button in your inbox which helps you quickly get context by creating a summary of the meeting and showing and summarizing relevant files',
       tags: [".NET", "C#", "React", "TypeScript", "CI/CD"],
-      link: "#",
-      github: "#",
+      learnMore:
+        "https://supersimple365.com/prepare-for-your-meeting-with-microsoft-365-copilot-and-outlook/",
+      preview: "/Meeting-prep.gif",
     },
+    // {
+    //   index: "03",
+    //   title: "RSVP Suggestions",
+    //   description: "TODO",
+    //   tags: ["React", "C#", "React", "GraphQL"],
+    //   learnMore: "#",
+    //   preview: "#",
+    // },
     {
       index: "03",
-      title: "RSVP Suggestions",
-      description: "TODO",
-      tags: ["React", "C#", "React", "GraphQL"],
-      link: "#",
-      github: "#",
-    },
-    {
-      index: "04",
       title: "ContextIQ",
       description:
         "Copilot chat provides a command-triggered search experience that allows users to query organizational context across people, files, messages, emails, and meetings. Relevant information is retrieved and summarized through an AI-powered conversational interface.",
       tags: ["React", "TypeScript"],
-      link: null,
-      github: "#",
+      learnMore: "#",
+      preview: "/CIQ-demo.gif",
     },
   ],
   experience: [

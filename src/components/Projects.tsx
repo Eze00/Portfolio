@@ -8,12 +8,12 @@ export default function Projects() {
   return (
     <section id="projects" className={styles.projects}>
       <ScrollReveal>
-        <SectionHeader number="03" label="Projects" />
+        <SectionHeader number="03" label="Shipped Projects" />
       </ScrollReveal>
 
       <div className={styles.list}>
-        {data.shippedProjects.map((project, i) => (
-          <ScrollReveal key={project.index} delay={i * 60}>
+        {data.shippedProjects.map((project, index) => (
+          <ScrollReveal key={project.index} delay={index * 60}>
             <div className={styles.item}>
               <span className={styles.index}>{project.index}</span>
 
@@ -30,14 +30,14 @@ export default function Projects() {
               </div>
 
               <div className={styles.links}>
-                {project.link && (
-                  <Link href={project.link} className={styles.link}>
-                    Link ↗
+                {project.learnMore && (
+                  <Link href={project.learnMore} className={styles.link}>
+                    Learn More ↗
                   </Link>
                 )}
-                {project.github && (
-                  <Link href={project.github} className={styles.link}>
-                    GitHub ↗
+                {project.preview && (
+                  <Link href={project.preview} className={styles.link}>
+                    Preview ↗
                   </Link>
                 )}
               </div>
