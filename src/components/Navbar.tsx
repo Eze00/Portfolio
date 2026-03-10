@@ -83,7 +83,8 @@ export default function Navbar() {
     if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
     scrollTimerRef.current = setTimeout(() => {
       isScrollingRef.current = false;
-    }, 800);
+      setActiveSection(id);
+    }, 1200);
   };
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {

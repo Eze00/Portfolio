@@ -17,7 +17,7 @@ const data = {
   ],
   stats: [
     { value: "3+", label: "Years Experience" },
-    { value: "8+", label: "Projects Shipped" },
+    { value: "10+", label: "Projects Shipped" },
     { value: "3", label: "Companies" },
   ],
   skills: [
@@ -73,7 +73,7 @@ const data = {
       type: "Full-time",
       logo: "/microsoft logo.png",
       description:
-        'When you have an upcoming meeting, Copilot proactively shows you a "Prepare" button in your inbox which helps you quickly get context by creating a summary of the meeting and showing and summarizing relevant files.',
+        "Spent nearly 3 years working on projects across the tech stack and shipping an array of features (both consumer and enterprise facing) that brought the company notable profits. I've drafted feature designs, collaborated with fellow engineers, designers and PMs.",
     },
     {
       period: "2022",
@@ -82,25 +82,25 @@ const data = {
       type: "Internship",
       logo: "/microsoft logo.png",
       description:
-        'When you have an upcoming meeting, Copilot proactively shows you a "Prepare" button in your inbox which helps you quickly get context by creating a summary of the meeting and showing and summarizing relevant files.',
+        "From May 2022 to August 2022, I fully integrated an app (Designer) into the microsoft365 suite and refactored the file ordering system in office.com web. Successfully shipping both features which lead to a full-time return offer.",
     },
     {
       period: "2022",
       role: "Back-end Engineer",
       company: "Cerebrum Corp",
-      type: "Part-time",
+      type: "Co-op",
       logo: "/Cerebrum Corp logo.png",
       description:
-        'When you have an upcoming meeting, Copilot proactively shows you a "Prepare" button in your inbox which helps you quickly get context by creating a summary of the meeting and showing and summarizing relevant files.',
+        "I was a part-time engineer working on offering intelligent lab workflow software solutions for medical and life sciences pathology labs. I was there from January 2022 to May 2022 before my Co-op ended.",
     },
     {
       period: "2021",
       role: "Full-stack Engineer Intern",
-      company: "Choice Hotels International",
+      company: "Choice Hotels",
       type: "Internship",
       logo: "/choice hotels logo.jpeg",
       description:
-        'When you have an upcoming meeting, Copilot proactively shows you a "Prepare" button in your inbox which helps you quickly get context by creating a summary of the meeting and showing and summarizing relevant files.',
+        "An internship that lasted from June 2021 to August 2021. During that time I worked on a dashboard feature that increased productivity and employee efficiency.",
     },
   ],
   socials: [
