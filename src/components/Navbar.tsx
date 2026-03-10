@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import data from "@/lib/data";
 import styles from "./styles/Navbar.module.css";
@@ -12,10 +12,15 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+const NAV_HEIGHT = 56;
+const OFFSET = NAV_HEIGHT + 32;
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const isScrollingRef = useRef(false);
+  const scrollTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -31,13 +36,22 @@ export default function Navbar() {
   }, [open]);
 
   const updateActiveSection = useCallback(() => {
-    const sectionIds = navLinks.map((l) => l.href.replace("#", ""));
-    const scrollY = window.scrollY + 120;
+    if (isScrollingRef.current) return;
 
+    const sectionIds = navLinks.map((l) => l.href.replace("#", ""));
+
+    const atBottom =
+      window.innerHeight + window.scrollY >= document.body.scrollHeight - 50;
+    if (atBottom) {
+      setActiveSection(sectionIds[sectionIds.length - 1]);
+      return;
+    }
+
+    const triggerY = window.scrollY + OFFSET + 10;
     let current = sectionIds[0];
     for (const id of sectionIds) {
       const el = document.getElementById(id);
-      if (el && el.offsetTop <= scrollY) {
+      if (el && el.offsetTop <= triggerY) {
         current = id;
       }
     }
@@ -50,14 +64,46 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", updateActiveSection);
   }, [updateActiveSection]);
 
-  const close = () => setOpen(false);
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    e.preventDefault();
+    const id = href.replace("#", "");
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    isScrollingRef.current = true;
+    setActiveSection(id);
+
+    const top = el.getBoundingClientRect().top + window.scrollY - OFFSET;
+    window.scrollTo({ top, behavior: "smooth" });
+    setOpen(false);
+
+    if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+    scrollTimerRef.current = setTimeout(() => {
+      isScrollingRef.current = false;
+    }, 800);
+  };
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    isScrollingRef.current = true;
+    setActiveSection("");
+    setOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+    scrollTimerRef.current = setTimeout(() => {
+      isScrollingRef.current = false;
+    }, 800);
+  };
 
   return (
     <>
       <nav className={`${styles.nav} ${scrolled ? styles.navScrolled : ""}`}>
-        <Link href="#" className={styles.logo} onClick={close}>
+        <a href="#" className={styles.logo} onClick={handleLogoClick}>
           {data.name}
-        </Link>
+        </a>
 
         <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
           <ul className={styles.navLinks}>
@@ -66,13 +112,14 @@ export default function Navbar() {
               const isActive = activeSection === sectionId;
               return (
                 <li key={l.label}>
-                  <Link
+                  <a
                     href={l.href}
+                    onClick={(e) => handleNavClick(e, l.href)}
                     className={`${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
                   >
                     {l.label}
                     {isActive && <span className={styles.activeDot} />}
-                  </Link>
+                  </a>
                 </li>
               );
             })}
@@ -80,7 +127,7 @@ export default function Navbar() {
 
           <button
             className={`${styles.hamburger} ${open ? styles.hamburgerOpen : ""}`}
-            onClick={() => setOpen((toggle) => !toggle)}
+            onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
           >
             <span />
@@ -107,13 +154,13 @@ export default function Navbar() {
                   transitionTimingFunction: "ease",
                 }}
               >
-                <Link
+                <a
                   href={l.href}
-                  onClick={close}
+                  onClick={(e) => handleNavClick(e, l.href)}
                   className={`${styles.overlayLink} ${isActive ? styles.overlayLinkActive : ""}`}
                 >
                   {l.label}
-                </Link>
+                </a>
               </li>
             );
           })}

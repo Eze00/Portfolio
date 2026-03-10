@@ -7,24 +7,28 @@
   --color-gold: #c9a96e;
   --color-gold-hover: #d9b97e;
 
-  /* Deepened charcoal palette for better contrast */
   --color-charcoal-900: #0f0e0d;
   --color-charcoal-800: #161514;
   --color-charcoal-750: #1c1b19;
   --color-charcoal-700: #222120;
   --color-charcoal-600: #2a2826;
 
-  /* Lifted text colors for better readability */
-  --color-text:   #f0ebe3;
+  --color-text: #f0ebe3;
   --color-text-2: #b8b0a6;
   --color-text-3: #7a7570;
 
   --max-width: 920px;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background: var(--color-charcoal-900);
@@ -40,29 +44,48 @@ body {
 .reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
 }
-.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* ── Timeline ── */
-.timeline { position: relative; padding-left: 1.75rem; }
+.timeline {
+  position: relative;
+  padding-left: 1.75rem;
+}
 .timeline::before {
   content: "";
   position: absolute;
-  left: 0; top: 8px; bottom: 0;
+  left: 0;
+  top: 8px;
+  bottom: 0;
   width: 1px;
-  background: linear-gradient(to bottom, var(--color-gold), var(--color-charcoal-600) 85%, transparent);
+  background: linear-gradient(
+    to bottom,
+    var(--color-gold),
+    var(--color-charcoal-600) 85%,
+    transparent
+  );
 }
 .tl-dot {
   position: absolute;
-  left: -1.95rem; top: 6px;
-  width: 9px; height: 9px;
+  left: -1.95rem;
+  top: 6px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--color-charcoal-900);
   border: 1px solid var(--color-gold);
   transition: background 0.2s;
 }
-.tl-item:hover .tl-dot { background: var(--color-gold); }
+.tl-item:hover .tl-dot {
+  background: var(--color-gold);
+}
 
 /* ── Skill grid ── */
 .skillGrid {
@@ -74,5 +97,17 @@ body {
   border-radius: 2px;
   overflow: hidden;
 }
-@media (max-width: 640px) { .skillGrid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 400px) { .skillGrid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .skillGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 400px) {
+  .skillGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+section {
+  scroll-margin-top: 88px;
+}

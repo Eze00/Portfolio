@@ -8,9 +8,9 @@ import styles from "./styles/Projects.module.css";
 
 export default function Projects() {
   const [openPreview, setOpenPreview] = useState<string | null>(null);
+  const [openCounts, setOpenCounts] = useState<Record<string, number>>({});
   const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
 
-  // When a preview opens and it's a video, play from start
   useEffect(() => {
     if (!openPreview) return;
     const video = videoRefs.current[openPreview];
@@ -22,7 +22,6 @@ export default function Projects() {
 
   const togglePreview = (index: string) => {
     if (openPreview === index) {
-      // Closing — pause and reset
       const video = videoRefs.current[index];
       if (video) {
         video.pause();
@@ -30,6 +29,11 @@ export default function Projects() {
       }
       setOpenPreview(null);
     } else {
+      // Increment count via state so React sees the new key and remounts the img
+      setOpenCounts((prev) => ({
+        ...prev,
+        [index]: (prev[index] ?? 0) + 1,
+      }));
       setOpenPreview(index);
     }
   };
@@ -51,14 +55,20 @@ export default function Projects() {
                 <p className={styles.desc}>{project.description}</p>
                 <div className={styles.tags}>
                   {project.tags.map((tag) => (
-                    <span key={tag} className={styles.tag}>{tag}</span>
+                    <span key={tag} className={styles.tag}>
+                      {tag}
+                    </span>
                   ))}
                 </div>
               </div>
 
               <div className={styles.links}>
                 {project.learnMore && (
-                  <Link href={project.learnMore} target="_blank" className={styles.link}>
+                  <Link
+                    href={project.learnMore}
+                    target="_blank"
+                    className={styles.link}
+                  >
                     Learn More ↗
                   </Link>
                 )}
@@ -73,12 +83,15 @@ export default function Projects() {
               </div>
             </div>
 
-            {/* Smooth preview panel */}
-            <div className={`${styles.previewPanel} ${openPreview === project.index ? styles.previewPanelOpen : ""}`}>
+            <div
+              className={`${styles.previewPanel} ${openPreview === project.index ? styles.previewPanelOpen : ""}`}
+            >
               <div className={styles.previewInner}>
                 {project.preview?.endsWith(".mp4") ? (
                   <video
-                    ref={(el) => { videoRefs.current[project.index] = el; }}
+                    ref={(el) => {
+                      videoRefs.current[project.index] = el;
+                    }}
                     src={project.preview}
                     loop
                     muted
@@ -87,7 +100,8 @@ export default function Projects() {
                   />
                 ) : (
                   <img
-                    src={project.preview}
+                    key={`${project.index}-${openCounts[project.index] ?? 0}`}
+                    src={`${project.preview}?t=${openCounts[project.index] ?? 0}`}
                     alt={`${project.title} preview`}
                     className={styles.previewMedia}
                   />
