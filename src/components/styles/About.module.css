@@ -12,7 +12,7 @@
 }
 
 .text p {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--color-text-2);
   line-height: 1.9;
   margin-bottom: 1rem;
@@ -21,6 +21,16 @@
 .text strong {
   color: var(--color-text);
   font-weight: 400;
+}
+
+.image {
+  width: 300px;
+  height: 320px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 50%;
+  margin: 0 auto 1.75rem;
+  display: block;
 }
 
 .card {
@@ -37,31 +47,29 @@
   padding: 0.85rem 1.1rem;
   border-bottom: 1px solid var(--color-charcoal-600);
 }
-.row:last-child {
-  border-bottom: none;
-}
+.row:last-child { border-bottom: none; }
 
 .rowKey {
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-text-3);
 }
 
 .rowVal {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--color-text);
 }
 
 .rowValHighlight {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--color-gold);
 }
 
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+.statusRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .statusDot {
@@ -69,15 +77,15 @@
   height: 5px;
   border-radius: 50%;
   background: var(--color-gold);
+  flex-shrink: 0;
   animation: pulseDot 2s ease-in-out infinite;
 }
 
-.image {
-  width: 300px;
-  height: 320px;
-  object-fit: cover;
-  object-position: center top;
-  border-radius: 50%;
-  margin: 0 auto 1.75rem;
-  display: block;
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
 }

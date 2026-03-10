@@ -23,10 +23,7 @@
   align-items: start;
   transition: background 0.15s;
 }
-
-.item:hover {
-  background: var(--color-charcoal-750);
-}
+.item:hover { background: var(--color-charcoal-750); }
 
 .index {
   font-size: 10px;
@@ -37,35 +34,37 @@
 
 .title {
   font-family: var(--font-serif);
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 400;
   letter-spacing: -0.01em;
   color: var(--color-text);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .desc {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--color-text-2);
   line-height: 1.8;
   margin-bottom: 0.85rem;
   max-width: 540px;
 }
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
 
 .tag {
-  font-size: 9px;
-  letter-spacing: 0.1em;
+  font-size: 11px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--color-text-3);
+  color: var(--color-text-2);
+  background: var(--color-charcoal-700);
   border: 1px solid var(--color-charcoal-600);
-  padding: 0.15rem 0.5rem;
+  padding: 0.2rem 0.6rem;
   border-radius: 2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.item:hover .tag {
+  color: var(--color-text);
+  border-color: var(--color-charcoal-500, #3a3835);
 }
 
 .links {
@@ -90,30 +89,24 @@
   font-family: var(--font-mono);
   padding: 0;
 }
+.link:hover { color: var(--color-gold); }
 
-.link:hover {
-  color: var(--color-gold);
-}
-
+/* Preview button always gold */
 .previewBtn {
-  color: var(--color-text-3);
+  color: var(--color-gold) !important;
+}
+.previewBtn:hover {
+  color: var(--color-gold-hover) !important;
 }
 
-.previewBtnActive {
-  color: var(--color-gold);
-}
-
-/* ── Smooth preview panel (car window effect) ── */
+/* Smooth preview panel */
 .previewPanel {
   background: var(--color-charcoal-750);
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-.previewPanelOpen {
-  max-height: 600px;
-}
+.previewPanelOpen { max-height: 600px; }
 
 .previewInner {
   padding: 1.5rem 1.75rem;
@@ -131,12 +124,6 @@
 }
 
 @media (max-width: 640px) {
-  .item {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-  .links {
-    flex-direction: row;
-    align-items: center;
-  }
+  .item { grid-template-columns: 1fr; gap: 0.75rem; }
+  .links { flex-direction: row; align-items: center; }
 }

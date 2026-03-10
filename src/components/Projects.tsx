@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import data from "@/lib/data";
 import SectionHeader from "./SectionHeader";
@@ -8,9 +8,20 @@ import styles from "./styles/Projects.module.css";
 
 export default function Projects() {
   const [openPreview, setOpenPreview] = useState<string | null>(null);
+  const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({});
 
   const togglePreview = (index: string) => {
-    setOpenPreview((prev) => (prev === index ? null : index));
+    if (openPreview === index) {
+      // Closing — reset video if it exists
+      const video = videoRefs.current[index];
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+      }
+      setOpenPreview(null);
+    } else {
+      setOpenPreview(index);
+    }
   };
 
   return (
@@ -22,7 +33,6 @@ export default function Projects() {
       <div className={styles.list}>
         {data.shippedProjects.map((project, index) => (
           <ScrollReveal key={project.index} delay={index * 60}>
-            {/* Main project row */}
             <div className={styles.item}>
               <span className={styles.index}>{project.index}</span>
 
@@ -44,7 +54,7 @@ export default function Projects() {
                 )}
                 {project.preview && (
                   <button
-                    className={`${styles.link} ${styles.previewBtn} ${openPreview === project.index ? styles.previewBtnActive : ""}`}
+                    className={`${styles.link} ${styles.previewBtn}`}
                     onClick={() => togglePreview(project.index)}
                   >
                     {openPreview === project.index ? "Close ✕" : "Preview ↓"}
@@ -54,12 +64,11 @@ export default function Projects() {
             </div>
 
             {/* Smooth preview panel */}
-            <div
-              className={`${styles.previewPanel} ${openPreview === project.index ? styles.previewPanelOpen : ""}`}
-            >
+            <div className={`${styles.previewPanel} ${openPreview === project.index ? styles.previewPanelOpen : ""}`}>
               <div className={styles.previewInner}>
                 {project.preview?.endsWith(".mp4") ? (
                   <video
+                    ref={(el) => { videoRefs.current[project.index] = el; }}
                     src={project.preview}
                     autoPlay
                     loop

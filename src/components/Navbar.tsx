@@ -15,6 +15,7 @@ const navLinks = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -24,10 +25,29 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [open]);
+
+  // Active section tracking via IntersectionObserver
+  useEffect(() => {
+    const sectionIds = navLinks.map((l) => l.href.replace("#", ""));
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    return () => observers.forEach((obs) => obs.disconnect());
+  }, []);
 
   const close = () => setOpen(false);
 
@@ -40,13 +60,21 @@ export default function Navbar() {
 
         <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
           <ul className={styles.navLinks}>
-            {navLinks.map((l) => (
-              <li key={l.label}>
-                <Link href={l.href} className={styles.navLink}>
-                  {l.label}
-                </Link>
-              </li>
-            ))}
+            {navLinks.map((l) => {
+              const sectionId = l.href.replace("#", "");
+              const isActive = activeSection === sectionId;
+              return (
+                <li key={l.label}>
+                  <Link
+                    href={l.href}
+                    className={`${styles.navLink} ${isActive ? styles.navLinkActive : ""}`}
+                  >
+                    {l.label}
+                    {isActive && <span className={styles.activeDot} />}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
           <button
@@ -54,34 +82,38 @@ export default function Navbar() {
             onClick={() => setOpen((toggle) => !toggle)}
             aria-label="Toggle menu"
           >
-            <span />
-            <span />
-            <span />
+            <span /><span /><span />
           </button>
         </div>
       </nav>
 
       <div className={`${styles.overlay} ${open ? styles.overlayOpen : ""}`}>
         <ul className={styles.overlayLinks}>
-          {navLinks.map((l, i) => (
-            <li
-              key={l.label}
-              style={{
-                transitionDelay: open ? `${i * 55}ms` : "0ms",
-                opacity: open ? 1 : 0,
-                transform: open ? "translateY(0)" : "translateY(12px)",
-                transition: "opacity 0.3s ease, transform 0.3s ease",
-              }}
-            >
-              <Link
-                href={l.href}
-                onClick={close}
-                className={styles.overlayLink}
+          {navLinks.map((l, i) => {
+            const sectionId = l.href.replace("#", "");
+            const isActive = activeSection === sectionId;
+            return (
+              <li
+                key={l.label}
+                style={{
+                  transitionDelay: open ? `${i * 55}ms` : "0ms",
+                  opacity: open ? 1 : 0,
+                  transform: open ? "translateY(0)" : "translateY(12px)",
+                  transitionProperty: "opacity, transform",
+                  transitionDuration: "0.3s",
+                  transitionTimingFunction: "ease",
+                }}
               >
-                {l.label}
-              </Link>
-            </li>
-          ))}
+                <Link
+                  href={l.href}
+                  onClick={close}
+                  className={`${styles.overlayLink} ${isActive ? styles.overlayLinkActive : ""}`}
+                >
+                  {l.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         <div className={styles.socialSection}>

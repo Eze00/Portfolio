@@ -15,7 +15,7 @@ export default function About() {
           <div className={styles.text}>
             <img
               src="/portfolio-pic.JPG"
-              alt="Exedine"
+              alt="Ezedine"
               className={styles.image}
             />
             <p>{data.bio}</p>
@@ -27,12 +27,15 @@ export default function About() {
             {data.facts.map((fact, index) => (
               <div key={index} className={styles.row}>
                 <span className={styles.rowKey}>{fact.key}</span>
-                <span
-                  className={
-                    fact.highlight ? styles.rowValHighlight : styles.rowVal
-                  }
-                >
-                  {fact.value}
+                <span className={fact.highlight ? styles.rowValHighlight : styles.rowVal}>
+                  {fact.highlight ? (
+                    <span className={styles.statusRow}>
+                      <span className={styles.statusDot} />
+                      {fact.value}
+                    </span>
+                  ) : (
+                    fact.value
+                  )}
                 </span>
               </div>
             ))}
