@@ -1,9 +1,9 @@
 const data = {
   name: "Ezedine Kargougou",
   titles: [
-    "full-stack Engineer...",
-    "front-end Engineer...",
-    "back-end Engineer...",
+    "full-stack engineer...",
+    "front-end engineer...",
+    "back-end engineer...",
   ],
   location: "Greater Phoenix Area, Arizona",
   email: "keze2000@outlook.com",
